@@ -1,4 +1,4 @@
-package quiz;
+package quiz.solved;
 
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ import org.junit.Test;
  * @author PenPen
  * @date   2015.10.23
  */
-public class NumberCombination {
+public class Q1 {
 	
 	public static final int[] I1 = {1,2,3};
 	public static final int   I2 = 4;
