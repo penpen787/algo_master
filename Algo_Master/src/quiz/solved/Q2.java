@@ -1,4 +1,4 @@
-package quiz.trying;
+package quiz.solved;
 
 import org.junit.Test;
 
