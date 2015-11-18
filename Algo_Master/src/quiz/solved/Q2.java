@@ -13,8 +13,8 @@ public class Q2 {
  *  
  */
 	
-	final int MAX = 2000000;
-	final int N = 7;
+//	final long MAX = 2000000;
+	final long N = 7;
 	
 	/*
 	 *  My Answer. I think.. It's rather a math problem. when N=4, 4*1.. 1 -> 5,  4*2..2 -> 10, 4*3..3 -> 15
