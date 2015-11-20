@@ -41,7 +41,7 @@ public class LinkedList {
 	public int size() {   
 		return this.size;
 	}
-	
+	 
 }
 
 class Node {
