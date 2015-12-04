@@ -15,7 +15,7 @@ import org.junit.Test;
  * Java 1.7
  * 
  * -----   RESULT   -----
- * 	Iteration 20 billion times	
+ * 	Iteration 10 billion times	
  * 	20 Cases
  * 
 	IF_2
