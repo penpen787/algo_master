@@ -5,8 +5,6 @@ public class Stack {
 	private Node bottom;
 	private Node top;
 	
-	
-	
 	public Stack() {
 		bottom = null;
 		top = null;
@@ -44,7 +42,11 @@ public class Stack {
 		}
 	}
 	
+	public Node peek() {
+		return this.top;
+	}
+	
 	public boolean isEmpty() {
-		return bottom == null ? true : false;
+		return this.bottom == null;
 	}
 }
