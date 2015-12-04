@@ -2,6 +2,7 @@ package etc;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -11,19 +12,16 @@ import org.junit.Test;
  * 
  * Test ENV
  * Windows 7 x64, SSD, 8GB ram, i5-4300M @2.6GHZ, 4core
+ * Java 1.7
  * 
  * -----   RESULT   -----
  * 	Iteration 20 billion times	
+ * 	20 Cases
  * 
- * 	IF_1
-	Time : 28561 ms
 	IF_2
 	Time : 37376 ms
-	SWITCH_1
-	Time : 17615 ms
 	SWITCH_2
 	Time : 17265 ms
-
  * 
  */
 public class Switch_VS_If {
@@ -31,9 +29,10 @@ public class Switch_VS_If {
 	long startTime;
 	long endTime;
 	
-	int numbers = 20;
-//	long times = 1000000000L;
+//	int numbers = 10;
+	int numbers = 5;
 	long times = 1000000000L;
+//	long times = 2000000000L;
 	
 	@Before
 	public void setup() {
@@ -46,18 +45,184 @@ public class Switch_VS_If {
 		System.out.println("Time : " + (endTime - startTime) + " ms");
 	}
 	
+	// times
 	int t;
+	
+	
+	@Test
+	@Ignore
+	public void testIf0_3_Cases() {
+		
+		/**
+		 * Time for loop 1 billion times (10억) = 3286 ms
+		 */
+		
+		numbers = 3;
+		
+		System.out.println("IF_3_Cases");
+		for(int i=0;i<numbers;i++){
+			for(long j=0; j< times; j++) {
+				
+				if	   (i == 0  )	t = i ; 
+				else if(i == 1  )	t = i ;
+				else if(i == 2  )	t = i ;
+				else 				t = i ;
+				
+			}
+		}
+	}
+	
+	@Test
+	@Ignore
+
+	public void testSwitch0_3_Cases() {
+		
+		numbers = 3;
+		
+		System.out.println("SWITCH_3_Cases");
+		for(int i=0;i<numbers;i++){
+			for(long j=0; j< times; j++) {
+				
+				switch (i) {
+				case 0:
+					t = i;
+					break;
+				case 1:
+					t = i;
+					break;
+				case 2:
+					t = i;
+					break;
+				default:
+					t = i;
+					break;
+				}
+			}
+		}
+	}
+	
+	@Test
+	@Ignore
+
+	public void testSwitch_4_Cases() {
+		
+		numbers = 4;
+		
+		System.out.println("SWITCH_4_Cases");
+		for(int i=0;i<numbers;i++){
+			for(long j=0; j< times; j++) {
+				
+				switch (i) {
+				case 0:
+					t = i;
+					break;
+				case 1:
+					t = i;
+					break;
+				case 2:
+					t = i;
+					break;
+				case 3:
+					t = i;
+					break;
+				default:
+					t = i;
+					break;
+				}
+			}
+		}
+	}
+	
+	@Test
+	@Ignore
+	public void testIf_4_Cases() {
+		
+		numbers = 4;
+		
+		System.out.println("IF_4_Cases");
+		for(int i=0;i<numbers;i++){
+			for(long j=0; j< times; j++) {
+				
+				if	   (i == 0  )	t = i ; 
+				else if(i == 1  )	t = i ;
+				else if(i == 2  )	t = i ;
+				else if(i == 3  )	t = i ;
+				else 				t = i ;
+				
+			}
+		}
+	}
+	
+	@Test
+	@Ignore
+
+	public void testIf_5_Cases() {
+		
+		numbers = 5;
+		
+		System.out.println("IF_5_Cases");
+		for(int i=0;i<numbers;i++){
+			for(long j=0; j< times; j++) {
+				
+				if	   (i == 0  )	t = i ; 
+				else if(i == 1  )	t = i ;
+				else if(i == 2  )	t = i ;
+				else if(i == 3  )	t = i ;
+				else if(i == 4  )	t = i ;
+				else 				t = i ;
+				
+			}
+		}
+	}
+	
+	@Test
+	@Ignore
+
+	public void testSwitch_5_Cases() {
+		
+		numbers = 5;
+		
+		System.out.println("SWITCH_5_Cases");
+		for(int i=0;i<numbers;i++){
+			for(long j=0; j< times; j++) {
+				
+				switch (i) {
+				case 0:
+					t = i;
+					break;
+				case 1:
+					t = i;
+					break;
+				case 2:
+					t = i;
+					break;
+				case 3:
+					t = i;
+					break;
+				case 4:
+					t = i;
+					break;
+				default:
+					t = i;
+					break;
+				}
+			}
+		}
+	}
+	
+	
+	
 	
 	/**
 	 * Time for loop 1 billion times (10억) with no codes inside = 3286 ms
 	 */
 	@Test
-	public void testIf1() {
+	@Ignore
+	public void testIf_10_Cases() {
 		
-		/**
-		 * Time for loop 1 billion times (10억) = 3286 ms
-		 */
-		System.out.println("IF_1");
+		numbers = 10;
+		
+		System.out.println("IF_10_Cases");
 		for(int i=0;i<numbers;i++){
 			for(long j=0; j< times; j++) {
 				
@@ -78,12 +243,16 @@ public class Switch_VS_If {
 	}
 	
 	@Test
-	public void testSwitch1() {
+	@Ignore
+	public void testSwitch_10_Cases() {
 		
 		/**
 		 * Time for loop 10 billion times = 3286 ms
 		 */
-		System.out.println("SWITCH_1");
+		
+		numbers = 10;
+
+		System.out.println("SWITCH_10_Cases");
 		for(int i=0;i<numbers;i++){
 			for(long j=0; j< times; j++) {
 				
@@ -127,9 +296,12 @@ public class Switch_VS_If {
 	}
 	
 	@Test
-	public void testIf2() {
+
+	public void testIf_20_Cases() {
 		
-		System.out.println("IF_2");
+		numbers = 20;
+		
+		System.out.println("IF_20_Cases");
 		for(int i=0;i<numbers;i++){
 			for(long j=0; j< times; j++) {
 				
@@ -159,9 +331,12 @@ public class Switch_VS_If {
 	}
 	
 	@Test
-	public void testSwitch2() {
+
+	public void testSwitch_20_Cases() {
 		
-		System.out.println("SWITCH_2");
+		numbers = 20;
+		
+		System.out.println("SWITCH_20_Cases");
 		for(int i=0;i<numbers;i++){
 			for(long j=0; j< times; j++) {
 				
