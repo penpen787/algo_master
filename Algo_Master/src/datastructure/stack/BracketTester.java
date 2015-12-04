@@ -58,6 +58,4 @@ public class BracketTester {
 		else if(o == '[') return c == ']';
 		else 			  return false;
 	}
-	
-	
 }
