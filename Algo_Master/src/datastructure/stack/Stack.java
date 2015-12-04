@@ -8,7 +8,6 @@ public class Stack {
 	
 	
 	public Stack() {
-		// init size 50
 		bottom = null;
 		top = null;
 	}
