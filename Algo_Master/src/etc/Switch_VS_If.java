@@ -51,7 +51,7 @@ public class Switch_VS_If {
 	
 	@Test
 	@Ignore
-	public void testIf0_3_Cases() {
+	public void testIf_3_Cases() {
 		
 		/**
 		 * Time for loop 1 billion times (10억) = 3286 ms
@@ -75,7 +75,7 @@ public class Switch_VS_If {
 	@Test
 	@Ignore
 
-	public void testSwitch0_3_Cases() {
+	public void testSwitch_3_Cases() {
 		
 		numbers = 3;
 		
