@@ -31,15 +31,12 @@ public class Q8 {
 		Map<Integer, Integer> map = new HashMap<>();
 		int size = nums.length;
 		
-		for(int i=1; i<size; i++) {
-			map.put(nums[i], i);
-		}
-		
 		for(int i=0; i<size; i++) {
-			if(map.containsKey(target - nums[i]) 
-					&& i != map.get(target - nums[i])) {
-				return new int[] {i + 1, map.get(target - nums[i]) + 1};
-			}
+			Integer smallIndex = map.get(target - nums[i]);
+			if(smallIndex == null)
+				map.put(nums[i], i);
+			else	
+				return new int[] {smallIndex + 1, i + 1};
 		}
 		
 		return null;
