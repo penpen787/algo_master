@@ -1,5 +1,8 @@
 package quiz.solved;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Test;
 
 public class Q8 {
@@ -12,7 +15,7 @@ public class Q8 {
 	 * - the array is not sorted
 	 */
 
-	int[] numbers = {0, 4, 3, 0};
+	int[] numbers = {-3, 4, 3, 0};
 	int target = 0;
 
 	@Test
@@ -25,19 +28,20 @@ public class Q8 {
 
 	public int[] twoSum(int[] nums, int target) {
 
+		Map<Integer, Integer> map = new HashMap<>();
 		int size = nums.length;
-		int[] result = new int[2];
 		
-		for(int i=0; i<size-1; i++) {
-			for(int j=i+1; j<size; j++) {
-				int val = nums[i] + nums[j];
-				if(val == target) {
-					result[0] = i+1;
-					result[1] = j+1;
-					return result;
-				} 
+		for(int i=1; i<size; i++) {
+			map.put(nums[i], i);
+		}
+		
+		for(int i=0; i<size; i++) {
+			if(map.containsKey(target - nums[i]) 
+					&& i != map.get(target - nums[i])) {
+				return new int[] {i + 1, map.get(target - nums[i]) + 1};
 			}
 		}
-		return result;
+		
+		return null;
 	}
 }
