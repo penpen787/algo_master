@@ -37,9 +37,14 @@ public class Q9 {
 	public void solve() {
 		ListNode resultNode = removeNthFromEnd(head, 1);
 		while(true) {
-			System.out.println(resultNode.val);
-			if(resultNode.next == null) break;
-			else resultNode = resultNode.next;
+			if(resultNode != null) {
+				System.out.println(resultNode.val);
+				if(resultNode.next == null) break;
+				else resultNode = resultNode.next;
+			} else {
+				System.out.println("NULL");
+				break;
+			}
 		}
 			
 		
