@@ -4,14 +4,20 @@ import org.junit.Test;
 
 public class Q12 {
 	/**
-	 * count primes https://leetcode.com/problems/count-primes/
+	 * count primes 
+	 * https://leetcode.com/problems/count-primes/
 	 */
 
 	@Test
 	public void solve() {
-		int n = 100;
+		long start = System.currentTimeMillis();
+		
+		int n = 1500000;
 		int primes = countPrimes(n);
 		System.out.println(primes);
+		
+		long end = System.currentTimeMillis();
+		System.out.println("Time : " + (end - start) + " ms");
 	}
 
 	public int countPrimes(int n) {
@@ -27,20 +33,41 @@ public class Q12 {
 			arr[i] = i;
 		}
 		
-		for(int i=2; i< n/2 + 1; i++) {
-			int cnt = 1;
-			while(true) {
-				int val = i * cnt++;
-				if(val <= n) {
-					
-				} else {
-					
-				}
-					
+		int cnt = 0;
+		
+		for(int i=2; i<= n; i++) {
+			if(arr[i] == 0)
+				continue;
+			
+			if(isPrime(arr[i])) {
+//				System.out.println("Prime: " + arr[i]);
+				cnt++;
+			} else {
+				arr[i] = 0;
 			}
 			
+			int c = 2;
+			while(true) {
+				int val = i * c++;
+				if(val <= n) {
+					arr[val] = 0;
+				} else {
+					break;
+				}
+			}
 		}
 		
-		return 0;
+		return cnt;
+	}
+	
+	// TODO: refactoring need
+	public boolean isPrime(int num) {
+		
+		for(int i=2; i * i < num; i++) {
+			if(num % i == 0) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
