@@ -18,7 +18,7 @@ public class Q11 {
 	// TODO: refactoring need
 	public boolean isPrime(Long num) {
 		
-		for(long i=2; i < num/2 + 1; i++) {
+		for(long i=2; i * i < num; i++) {
 			if(num % i == 0) {
 				return false;
 			}
