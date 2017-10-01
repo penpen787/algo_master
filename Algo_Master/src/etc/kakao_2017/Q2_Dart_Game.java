@@ -19,29 +19,25 @@ public class Q2_Dart_Game {
 		int[] points = new int[3];
 		char[] chars = dartResult.toCharArray();
 		
+		// 다트의 순서 : 0,1,2
 		int dartIndex = 0;
+		// 마지막 다트 종료문자 순서 (이번 다트에서 점수 추출용)
 		int lastDartCharIndex = 0; 
-		char sc; // specialChar
-		
 		
 		for(int i=0; i<chars.length; i++) {
 			if (dartIndex == 4) {
 				break;
 			}
-			
 			char c = chars[i];
 
 			if (c == 'S' || c == 'D' || c == 'T') {
-
 				points[dartIndex] = getSquredPoints(Integer.valueOf(dartResult.substring(lastDartCharIndex, i)), c);
-				System.out.println(points[dartIndex]);
 
 				if (i != chars.length - 1) {
 					char nextChar = chars[i + 1];
 					if (nextChar == '*' || nextChar == '#') {
+						
 						lastDartCharIndex = i + 2;
-						sc = nextChar;
-	
 						if (nextChar == '*') {
 							points[dartIndex] = points[dartIndex] * 2;
 							if(dartIndex > 0) {
@@ -55,10 +51,8 @@ public class Q2_Dart_Game {
 						lastDartCharIndex = i + 1;
 					}
 				}
-
 				dartIndex++;
 			}
-			
 		}
 
 		int sum = points[0] + points[1] + points[2];
