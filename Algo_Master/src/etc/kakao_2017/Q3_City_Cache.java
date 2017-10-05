@@ -31,7 +31,9 @@ public class Q3_City_Cache {
 				cacheMap.put(city, i);
 				pTime++;
 			} else {
-				if(cacheMap.size() < cacheSize) {
+				if(cacheSize == 0) {
+					// do nothing
+				} else if(cacheMap.size() < cacheSize) {
 					cacheMap.put(city, i);
 				} else {
 					doLRU(cacheMap, city, i);
