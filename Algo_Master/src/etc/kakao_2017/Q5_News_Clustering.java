@@ -12,7 +12,8 @@ import static org.hamcrest.core.Is.is;
  * @author kyunghun.jeon
  *         created on 2017. 10. 7
  *
- * 풀이시간 :
+ * 풀이시간 : 01:10:03
+ * Q1~Q5 총 시간 : 04:56:27
  */
 public class Q5_News_Clustering {
 
