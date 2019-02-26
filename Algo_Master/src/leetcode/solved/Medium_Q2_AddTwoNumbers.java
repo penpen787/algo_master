@@ -1,11 +1,11 @@
 package leetcode.solved;
 
-import leetcode.TreeNode;
+import leetcode.ListNode;
 
 /**
  * https://leetcode.com/problems/add-two-numbers/
  */
-public class Medium_Q938_RangeSumOfBST {
+public class Medium_Q2_AddTwoNumbers {
 
 	public ListNode addTwoNumbers(ListNode n1, ListNode n2) {
 		int bal = 0;
