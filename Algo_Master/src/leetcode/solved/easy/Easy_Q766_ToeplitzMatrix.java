@@ -3,6 +3,7 @@ package leetcode.solved.easy;
 
 /**
  * https://leetcode.com/problems/toeplitz-matrix/
+ * time : 28mins
  */
 public class Easy_Q766_ToeplitzMatrix {
     int rows;
