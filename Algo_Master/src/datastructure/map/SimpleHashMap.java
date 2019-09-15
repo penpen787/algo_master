@@ -1,8 +1,8 @@
 package datastructure.map;
 
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Map;
 import java.util.Set;
 
 public class SimpleHashMap<K, V> {
@@ -12,9 +12,14 @@ public class SimpleHashMap<K, V> {
     private static class Entry<K, V> {
         K key;
         V value;
+
+        public Entry(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
     }
 
-//    private int bucketSize;
+//    private int bucketSize; // todo : rehashing for balance
     private LinkedList<Entry>[] buckets = null;
     private int bucketSize;
     private int size;
@@ -34,9 +39,12 @@ public class SimpleHashMap<K, V> {
         if(bucket == null) {
             return null;
         }
-        // TODO : from here
+        for (Entry entry : bucket) {
+            if(entry.key.equals(key)) {
+                return (V) entry.value;
+            }
 
-//        bucket
+        }
         return null;
     }
 
@@ -45,29 +53,62 @@ public class SimpleHashMap<K, V> {
             throw new IllegalArgumentException("Key cannot be null");
         }
 
+        int mod = key.hashCode() % bucketSize;
+        LinkedList<Entry> bucket = buckets[mod];
+        if(bucket == null) {
+            bucket = new LinkedList<>();
+            bucket.add(new Entry(key, value));
+            buckets[mod] = bucket;
+            size++;
+            return value;
+        }
 
-        return null;
+        for (Entry entry : bucket) {
+            if(entry.key.equals(key)) {
+                entry.value = value;
+                return value;
+            }
+        }
+
+        bucket.add(new Entry(key, value));
+        size++;
+        return value;
     }
 
 
     public V remove(Object key) {
+        int mod = key.hashCode() % bucketSize;
+        LinkedList<Entry> bucket = buckets[mod];
+        Iterator<Entry> iterator = bucket.iterator();
+        while (iterator.hasNext()) {
+            Entry entry = iterator.next();
+            if(entry.key.equals(key)) {
+                iterator.remove();
+                size--;
+                return (V) entry.value;
+            }
+        }
         return null;
-    }
-
-    public void putAll(Map<? extends K, ? extends V> m) {
-
     }
 
     public void clear() {
-
+        // remove pointer
+        for(int i=0; i<buckets.length; i++) {
+            buckets[i] = null;
+        }
+        size = 0;
     }
 
     public Set<K> keySet() {
-        return null;
-    }
-
-    public Collection<V> values() {
-        return null;
+        Set<K> keySet = new HashSet<>();
+        for(LinkedList<Entry> bucket : buckets) {
+            if(bucket != null) {
+                for(Entry entry : bucket) {
+                    keySet.add((K)entry.key);
+                }
+            }
+        }
+        return keySet;
     }
 
     public int size() {
@@ -77,16 +118,4 @@ public class SimpleHashMap<K, V> {
     public boolean isEmpty() {
         return size == 0;
     }
-
-    /*
-    public boolean containsKey(Object key) {
-        return get(key) != null;
-    }
-
-    public boolean containsValue(Object value) {
-        // TODO
-        return false;
-    }
-    */
-
 }
